@@ -5,9 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class fileEditor {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         fileWriter("Hello", "file.txt");
         System.out.println(fileReader("file.txt"));
+        System.out.println (countCharacters ("file.txt"));
     }
 
     public static void fileWriter(String str, String fileName) {
