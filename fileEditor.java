@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,4 +34,19 @@ public class fileEditor {
         }
         return "";
     }
+
+    public static int countCharacters (String fileName) throws IOException
+    {
+        BufferedReader reader = new BufferedReader (new FileReader (fileName));
+        int charCount = 0;
+        while (reader.ready())
+        {
+            charCount++;
+        }
+        return charCount;
+
+    }
+
+
+
 }
