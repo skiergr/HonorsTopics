@@ -5,27 +5,32 @@ import java.io.IOException;
 
 public class fileEditor {
     public static void main(String[] args) {
-        fileWriter();
-        fileReader();
+        fileWriter("Hello", "file.txt");
+        System.out.println(fileReader("file.txt"));
     }
 
-    public static void fileWriter() {
+    public static void fileWriter(String str, String fileName) {
         try {
-            FileWriter writer = new FileWriter("file.txt");
-            writer.write("Hello");
+            FileWriter writer = new FileWriter(fileName);
+            writer.write(str);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void fileReader() {
+    public static String fileReader(String fileName) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("file.txt"));
-            System.out.println(reader.readLine());
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            StringBuilder str = new StringBuilder();
+            while (reader.ready()) {
+                str.append((char) reader.read());
+            }
             reader.close();
+            return str.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "";
     }
 }
